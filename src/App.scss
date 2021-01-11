@@ -1,0 +1,74 @@
+.right-rounded {
+  border-radius: 0 5px 5px 0;
+}
+.left-jumbo-image img {
+  vertical-align: middle;
+}
+
+.teaser img {
+  filter: grayscale(1);
+}
+
+.teaser img {
+  transition: filter 200ms linear;
+}
+
+.teaser:hover {
+  img {
+    filter: grayscale(0);
+  }
+}
+
+.jumbo-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 300px;
+  background: linear-gradient(#00000000, black);
+}
+.full-episode {
+  font-size: 4rem;
+}
+.episode-info {
+  position: absolute;
+  bottom: 0;
+}
+
+.hit {
+  display: flex;
+}
+
+.hit-content {
+  flex-grow: 1;
+}
+.ais-Hits {
+  position: absolute;
+  z-index: 999;
+  overflow: auto;
+  max-height: 700px;
+  width: 96%;
+  left: 2%;
+  margin-top: -1.5em;
+}
+.ais-SearchBox {
+  button {
+    background: none;
+    border: none;
+  }
+}
+
+button.ais-SearchBox-reset {
+  position: absolute;
+  top: 0.75em;
+  right: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  cursor: pointer;
+}
+
+.ais-SearchBox-input::-webkit-search-decoration,
+.ais-SearchBox-input::-webkit-search-cancel-button,
+.ais-SearchBox-input::-webkit-search-results-button,
+.ais-SearchBox-input::-webkit-search-results-decoration {
+  display: none;
+}

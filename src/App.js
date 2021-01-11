@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
+import algoliasearch from "algoliasearch";
+import AlgoliaSearch from "./Components/AlgoliaSearch";
+import "./App.scss";
+import { showData } from "./westworld";
+import Episodes from "./Containers/Episodes";
 function App() {
+  const searchClient = algoliasearch(
+    "SDFI1C6F8Z",
+    "8470db6c6a802b196dcb58da38d35ee3"
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <AlgoliaSearch searchClient={searchClient} />
+        <Episodes data={showData} />
+      </div>
     </div>
   );
 }
