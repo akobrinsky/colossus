@@ -101,3 +101,8 @@ button.navbar-item {
 .error-logo {
   margin-top: -5em;
 }
+@media only screen and (max-width: 768px) {
+  .teaser img {
+    min-width: 100%;
+  }
+}
