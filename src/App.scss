@@ -7,9 +7,6 @@
 
 .teaser img {
   filter: grayscale(1);
-}
-
-.teaser img {
   transition: filter 200ms linear;
 }
 
@@ -71,4 +68,36 @@ button.ais-SearchBox-reset {
 .ais-SearchBox-input::-webkit-search-results-button,
 .ais-SearchBox-input::-webkit-search-results-decoration {
   display: none;
+}
+
+.navbar-item svg {
+  fill: #f2f2f2;
+  width: 100px;
+  height: 100px;
+  transition: fill 200ms linear;
+}
+
+.navbar-item svg:hover {
+  fill: #add8bf;
+}
+
+button.navbar-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ais-Highlight-highlighted {
+  background: #c6d963;
+  color: #222;
+}
+.hit-content {
+  transition: background 200ms linear;
+}
+.hit-content:hover {
+  background: #343d3d;
+}
+
+.error-logo {
+  margin-top: -5em;
 }

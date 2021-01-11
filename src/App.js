@@ -1,8 +1,10 @@
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
 import algoliasearch from "algoliasearch";
 import AlgoliaSearch from "./Components/AlgoliaSearch";
+import { BrowserRouter, Route } from "react-router-dom";
 import "./App.scss";
 import { showData } from "./westworld";
+import Header from "./Containers/Header";
 import Episodes from "./Containers/Episodes";
 function App() {
   const searchClient = algoliasearch(
@@ -11,12 +13,16 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <div className="container">
-        <AlgoliaSearch searchClient={searchClient} />
-        <Episodes data={showData} />
+    <BrowserRouter>
+      <div className="App">
+        <Route
+          path="/"
+          component={() => (
+            <Episodes data={showData} searchClient={searchClient} />
+          )}
+        />
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

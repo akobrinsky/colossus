@@ -1,11 +1,15 @@
 import React from "react";
+import { useParams } from "react-router";
+// import { showData } from "../../westworld";
 
-const Episode = ({ episodeInfo }) => {
-  const { date, images, length, name, number, season, summary } = episodeInfo;
+const Episode = ({ shows }) => {
+  const { id } = useParams();
+  const { date, images, length, name, number, season, summary } = shows[id];
+
   return (
     <section>
       <div className="is-relative jumbotron">
-        <img src={images.original} />
+        <img alt={name} src={images.original} />
         <div className="jumbo-title"></div>
         <div className="episode-info p-4">
           <h1 className="title full-episode">{name}</h1>

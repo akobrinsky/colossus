@@ -49,7 +49,6 @@
   0% {
     /* transform: scaleY(1); */
     height: 55%;
-    background: rgb(223, 223, 235);
   }
   100% {
     /* transform: scaleY(1.8); */

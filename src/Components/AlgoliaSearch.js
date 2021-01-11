@@ -4,9 +4,11 @@ import {
   Highlight,
   connectSearchBox,
 } from "react-instantsearch-dom";
+import { connectStateResults } from "react-instantsearch/connectors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AlgoliaSearch = ({ searchClient }) => {
   const [showHits, setShowHits] = useState(false);
@@ -24,61 +26,73 @@ const AlgoliaSearch = ({ searchClient }) => {
 
   const Hit = ({ hit }) => {
     return (
-      <div className={`hits ${!showHits ? "is-hidden" : ""}`}>
-        <div className="hit has-background-dark">
-          <img alt={hit.name} src={hit.thumbnail} />
-          <div className="hit-content p-2">
-            <p className="is-size-5">
-              {hit.season} {hit.number} {hit.year}
-            </p>
-            <p className="is-italic">{hit.name}</p>
-            <p className="">{hit.summary}</p>
-            <a className="button is-small is-primary" href={hit.objectID}>
-              See episode
-            </a>
+      <div className="hits">
+        <Link to={`/episodes/${hit.objectID}`} className="has-text-light">
+          <div className="hit has-background-dark">
+            <img
+              alt={hit.name}
+              src={hit.thumbnail}
+              className="is-hidden-mobile"
+            />
+            <div className="hit-content p-3">
+              <p className="is-size-5">
+                <span className="is-size-5 mr-2">
+                  <Highlight attribute="season" hit={hit} />
+                </span>
+                <span className="is-size-5 mr-2">
+                  <Highlight attribute="number" hit={hit} />
+                </span>
+                <span className="is-size-5 mr-2">
+                  <Highlight attribute="year" hit={hit} />
+                </span>
+              </p>
+              <p className="is-italic">
+                <Highlight attribute="name" hit={hit} />
+              </p>
+              <p className="">
+                <Highlight attribute="summary" hit={hit} />
+              </p>
+              {/* <button className="button is-small is-primary">
+                See episode
+              </button> */}
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     );
   };
 
   const CustomSearch = connectSearchBox(
-    ({ showHits, onFocus, onBlurHandler, currentRefinement, refine }) => {
+    ({ showHits, onBlurHandler, currentRefinement, refine }) => {
       return (
-        <div className="field ais-SearchBox">
-          <div className="control has-icons-right">
-            <input
-              className="input is-large is-radiusless"
-              type="text"
-              placeholder="Search for episodes"
-              value={currentRefinement}
-              onFocus={(e) => onFocus(e)}
-              onBlur={() => onBlurHandler()}
-              onChange={(e) => {
-                refine(e.target.value);
-              }}
-            />
-            <button
-              className={`ais-SearchBox-reset ${!showHits ? "is-hidden" : ""}`}
-              type="reset"
-              title="Clear the search query."
-            >
-              <span className="icon is-right">
-                <FontAwesomeIcon
-                  icon={faTimesCircle}
-                  size="2x"
-                  color="#1abc9c"
-                  onClick={() => onBlurHandler()}
-                />
-              </span>
-            </button>
+        <div className="container">
+          <div className="field ais-SearchBox">
+            <div className="control has-icons-right">
+              <input
+                className="input is-large is-radiusless"
+                type="text"
+                placeholder="Search for episodes"
+                value={currentRefinement}
+                // onFocus={(e) => onFocus(e)}
+                // onBlur={() => onBlurHandler()}
+                onChange={(e) => {
+                  refine(e.target.value);
+                }}
+              />
+            </div>
           </div>
         </div>
       );
     }
   );
 
-  const Content = () => <Hits hitComponent={Hit} />;
+  const QueryResults = connectStateResults(({ searchState }) =>
+    searchState && searchState.query ? (
+      <Hits hitComponent={Hit} />
+    ) : //<div>No query</div>
+    null
+  );
+  // const Content = () => <Hits hitComponent={Hit} />;
 
   return (
     <div className="AlgoliaSearch">
@@ -94,7 +108,8 @@ const AlgoliaSearch = ({ searchClient }) => {
             showHits={showHits}
           />
         </header>
-        <Content />
+        {/* <Content /> */}
+        <QueryResults />
       </InstantSearch>
     </div>
   );
