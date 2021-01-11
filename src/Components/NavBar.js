@@ -34,7 +34,9 @@ const NavBar = (props) => {
           </Link>
         </div>
         <div
-          className={`navbar-menu ${showMenu && 'is-active'}`}
+          className={`navbar-menu has-background-dark ${
+            showMenu && 'is-active'
+          }`}
           id="navigator"
         >
           <div className="navbar-end">
