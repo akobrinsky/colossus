@@ -1,8 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Show = ({ showInfo }) => {
-  const { day, genres, name, network, summary, time, url, image } = showInfo;
-  console.log(showInfo);
+  const { day, genres, name, network, summary, url, image } = showInfo;
   const tags = genres.map((genre) => (
     <span key={genre} className="tag is-link">
       {genre}
@@ -11,7 +10,7 @@ const Show = ({ showInfo }) => {
   return (
     <div className="columns is-gapless m-0">
       <div className="column is-two-fifths left-jumbo-image">
-        <img className="" src={image} />
+        <img alt={name} src={image} />
       </div>
       <div className="column has-background-dark is-vcentered">
         <div className="py-6 px-5 content">

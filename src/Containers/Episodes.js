@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { dateFormatter, minutesDisplay, htmlStripper } from "../Utils/helpers";
-import Teasers from "../Containers/Teasers";
-import Loader from "../Components/Loader/Loader";
-import Show from "../Components/Show";
-import Episode from "../Components/Episode";
-import Header from "../Containers/Header";
-import ErrorPage from "../Components/ErrorPage";
-import { Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { dateFormatter, minutesDisplay, htmlStripper } from '../Utils/helpers';
+import Teasers from '../Containers/Teasers';
+import Loader from '../Components/Loader/Loader';
+import Show from '../Components/Show';
+import Episode from '../Components/Episode';
+import Header from '../Containers/Header';
+import ErrorPage from '../Components/ErrorPage';
+import { Route, Switch } from 'react-router-dom';
 
 const Episodes = ({ data, searchClient }) => {
   const [shows, setShows] = useState({});
@@ -39,9 +39,9 @@ const Episodes = ({ data, searchClient }) => {
           number: episode.number,
           images: episode.image,
           length: minutesDisplay(episode.runtime),
-          date: episodeDate("full-date"),
+          date: episodeDate('full-date'),
           summary: htmlStripper(episode.summary),
-          unixtime: episodeDate("unixTime"),
+          unixtime: episodeDate('unixTime'),
         };
         return acc;
       }, {});
@@ -49,7 +49,8 @@ const Episodes = ({ data, searchClient }) => {
       setMainListing(newest.reverse());
       setShows(newShows);
       setLoading(false);
-    }, 2000);
+      return () => clearTimeout(timer);
+    }, 3000);
   }, []);
   return (
     <>

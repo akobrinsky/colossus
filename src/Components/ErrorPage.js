@@ -1,5 +1,5 @@
-import { ReactComponent as FullLogo } from "../UI/SVG/colossus.svg";
-import React from "react";
+import { ReactComponent as FullLogo } from '../UI/SVG/colossus.svg';
+import React from 'react';
 
 const ErrorPage = () => {
   return (

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../UI/SVG/colossus.svg";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../UI/SVG/colossus.svg';
 const NavBar = (props) => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -22,7 +22,7 @@ const NavBar = (props) => {
           <Link
             to="#"
             role="button"
-            className={`navbar-burger ${showMenu && "is-active"}`}
+            className={`navbar-burger ${showMenu && 'is-active'}`}
             aria-label="menu"
             aria-expanded="false"
             data-target="navigator"
@@ -34,7 +34,7 @@ const NavBar = (props) => {
           </Link>
         </div>
         <div
-          className={`navbar-menu ${showMenu && "is-active"}`}
+          className={`navbar-menu ${showMenu && 'is-active'}`}
           id="navigator"
         >
           <div className="navbar-end">

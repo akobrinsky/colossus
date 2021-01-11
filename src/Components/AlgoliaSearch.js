@@ -3,19 +3,17 @@ import {
   Hits,
   Highlight,
   connectSearchBox,
-} from "react-instantsearch-dom";
-import { connectStateResults } from "react-instantsearch/connectors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+} from 'react-instantsearch-dom';
+import { connectStateResults } from 'react-instantsearch/connectors';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const AlgoliaSearch = ({ searchClient }) => {
   const [showHits, setShowHits] = useState(false);
 
   const onFocusHandfler = (e) => {
     if (e.currentTarget === e.target) {
-      console.log("fine");
+      console.log('fine');
     }
     e.preventDefault();
     setShowHits(true);

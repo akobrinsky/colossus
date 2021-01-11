@@ -1,15 +1,12 @@
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom";
-import algoliasearch from "algoliasearch";
-import AlgoliaSearch from "./Components/AlgoliaSearch";
-import { BrowserRouter, Route } from "react-router-dom";
-import "./App.scss";
-import { showData } from "./westworld";
-import Header from "./Containers/Header";
-import Episodes from "./Containers/Episodes";
+import algoliasearch from 'algoliasearch';
+import { BrowserRouter, Route } from 'react-router-dom';
+import './App.scss';
+import { showData } from './westworld';
+import Episodes from './Containers/Episodes';
 function App() {
   const searchClient = algoliasearch(
-    "SDFI1C6F8Z",
-    "8470db6c6a802b196dcb58da38d35ee3"
+    'SDFI1C6F8Z',
+    '8470db6c6a802b196dcb58da38d35ee3'
   );
 
   return (

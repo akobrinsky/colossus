@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 const Teaser = ({ id, episodeInfo, idx }) => {
   const stripe =
-    idx % 2 === 0 ? "has-background-dark-light" : "has-background-dark";
+    idx % 2 === 0 ? 'has-background-dark-light' : 'has-background-dark';
   return (
     <Link to={`/episodes/${id}`} className="has-text-light">
       <article className={`is-flex-tablet teaser br-5 ${stripe}`}>
