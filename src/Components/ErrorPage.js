@@ -1,4 +1,4 @@
-import { ReactComponent as FullLogo } from '../UI/SVG/colossus.svg';
+import { ReactComponent as FullLogo } from '../UI/SVG/full-logo.svg';
 import React from 'react';
 
 const ErrorPage = () => {
@@ -8,7 +8,7 @@ const ErrorPage = () => {
         Sorry, I couldn't find that page
       </h1>
       <div className="error-logo">
-        <FullLogo fill="#2ecc71" />
+        <FullLogo />
       </div>
     </div>
   );
